@@ -4,6 +4,7 @@
     Author     : entra21
 --%>
 
+<%@page import="Modelos.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -15,35 +16,35 @@
         <h1>Edição de Usuário!</h1>
         <hr />
         <%
-        String cpf = request.getParameter("cpf");
+        int id =Integer.parseInt(request.getParameter("id"));
         Usuario u = new Usuario();
-        if(cpf != null){
-        u = u.consultar(cpf);
+        if(id != 0){
+        u = u.consultar(id);
         }
         %>
-        <form action="recebeeditarcliente.jsp" method = "POST">
+        <form action="" method = "POST">
             
             
             <label>CPF</label>
             <input type="text" name="cpf"
                    disable="true"
-                   value="<%out.write(""+c.getCpf());%>"/>
+                   value="<%out.write(""+u.getCpf());%>"/>
             <br />
             <label>Nome</label>
             <input type="text" name="nome"
-                   value=""<%out.write(c.getNome());%> />
+                   value="<%out.write(""+u.getNome());%>" />
             <br />
             <label>Numero do Cartao</label>
-            <input type="text" name="numerocartao"
-                   value=""<%out.write(c.getNumerocartao());%> />
+            <input type="text" name="datanascimento"
+                   value="<%out.write(""+String.valueOf(u.getDatanascimento()));%>"/>
             <br />
             <label>email</label>
             <input type="text" name="email"
-                   value="<%out.write(""+c.getEmail());%>" />
+                   value="<%out.write(""+u.getEmail());%>" />
             <br />
             <label>Fone</label>
             <input type="text" name="fone"
-                   value="<%out.write(""+c.getFone());%>" />
+                   value="<%out.write(""+u.getFone());%>" />
             <br />
             <hr />
             <input type="submit" value="ALTERAR" />
